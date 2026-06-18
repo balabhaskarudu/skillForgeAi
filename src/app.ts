@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import { verifyToken } from './middleware/authMiddleware';
 import authRoutes from "./routes/authRoutes";
+import resumeRoutes from './routes/resumeRoutes';
+
 
 const app = express();
 
@@ -27,6 +29,10 @@ app.get(
       user: (req as any).user,
     });
   }
+);
+app.use(
+  '/api/resumes',
+  resumeRoutes
 );
 
 export default app;
