@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { verifyToken } from './middleware/authMiddleware';
 import authRoutes from "./routes/authRoutes";
 
 const app = express();
@@ -15,5 +16,17 @@ app.get("/", (_req, res) => {
     message: "SkillForge AI Backend Running"
   });
 });
+
+app.get(
+  '/api/protected',
+  verifyToken,
+  (req, res) => {
+    res.json({
+      success: true,
+      message: 'Protected route accessed',
+      user: (req as any).user,
+    });
+  }
+);
 
 export default app;
