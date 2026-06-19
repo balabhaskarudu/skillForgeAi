@@ -6,6 +6,9 @@ import {
 import {
   analyzeResume,getUserAnalyses
 } from '../services/analysisService';
+import {
+  asyncHandler,
+} from '../utils/asyncHandler';
 
 export const analyzeResumeController =
   async (
@@ -71,3 +74,4 @@ export const analyzeResumeController =
       });
     }
   };
+

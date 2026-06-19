@@ -1,8 +1,8 @@
 import express from 'express';
 
 import {
-  generateRoadmapController,getRoadmaps
-} from '../controllers/roadmapController';
+  getDashboardController,
+} from '../controllers/dashboardController';
 
 import {
   verifyToken,
@@ -11,16 +11,10 @@ import {
 const router =
   express.Router();
 
-router.post(
-  '/generate/:analysisId',
-  verifyToken,
-  generateRoadmapController
-);
-
 router.get(
   '/',
   verifyToken,
-  getRoadmaps
+  getDashboardController
 );
 
 export default router;

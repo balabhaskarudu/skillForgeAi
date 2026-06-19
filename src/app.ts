@@ -7,7 +7,13 @@ import analysisRoutes
 from './routes/analysisRoutes';
 import roadmapRoutes
 from './routes/roadmapRoutes';
-
+import interviewRoutes
+from './routes/interviewRoutes';
+import dashboardRoutes
+from './routes/dashboardRoutes';
+import {
+  errorHandler,
+} from './middleware/errorMiddleware';
 // import {
 //   askGemini,
 // } from './services/geminiService';
@@ -48,6 +54,17 @@ app.use(
   '/api/roadmaps',
   roadmapRoutes
 );
+app.use(
+  '/api/interviews',
+  interviewRoutes
+);
+app.use(
+  '/api/dashboard',
+  dashboardRoutes
+);
+
+
+app.use(errorHandler);
 // app.get(
 //   '/api/test-gemini',
 //   async (

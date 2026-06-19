@@ -81,3 +81,25 @@ ${analysis.skillGaps.join('\n')}
 
     return roadmap;
   };
+
+  export const getUserRoadmaps =
+  async (
+    userId: string
+  ) => {
+    return Roadmap.find({
+      userId,
+    }).sort({
+      createdAt: -1,
+    });
+  };
+
+  export const getRoadmapById =
+  async (
+    roadmapId: string,
+    userId: string
+  ) => {
+    return Roadmap.findOne({
+      _id: roadmapId,
+      userId,
+    });
+  };
