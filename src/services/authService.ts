@@ -1,9 +1,9 @@
 import dotenv from 'dotenv';
 dotenv.config();
-
 import bcrypt from 'bcryptjs';
 import User, { IUser } from '../models/User';
 import jwt from 'jsonwebtoken';
+import { env } from '../config/env';
 
 interface RegisterUserInput {
   name: string;
@@ -62,13 +62,13 @@ export const loginUser = async (
       userId: user._id,
       email: user.email,
     },
-    process.env.JWT_SECRET as string,
+    env.JWT_SECRET as string,
   {
     expiresIn: '7d',
   }
-    // process.env.JWT_SECRET as string,
+    // env.JWT_SECRET as string,
     // {
-    //   expiresIn: process.env.JWT_EXPIRES_IN || '7000',
+    //   expiresIn: env.JWT_EXPIRES_IN || '7000',
     // }
   );
 

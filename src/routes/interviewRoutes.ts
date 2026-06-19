@@ -1,8 +1,8 @@
 import express from 'express';
 
 import {
-  generateRoadmapController,getRoadmaps
-} from '../controllers/roadmapController';
+  generateInterviewController,
+} from '../controllers/interviewController';
 
 import {
   verifyToken,
@@ -12,15 +12,9 @@ const router =
   express.Router();
 
 router.post(
-  '/generate/:analysisId',
+  '/generate/:roadmapId',
   verifyToken,
-  generateRoadmapController
-);
-
-router.get(
-  '/',
-  verifyToken,
-  getRoadmaps
+  generateInterviewController
 );
 
 export default router;
